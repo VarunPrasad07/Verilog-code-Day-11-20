@@ -1,0 +1,64 @@
+module tb_sr_flip_flop;
+    reg S;        
+    reg R;     
+    reg clk;      
+    wire Q;      
+    wire Q_n;    
+    
+    sr_flip_flop dut (
+        .S(S),
+        .R(R),
+        .clk(clk),
+        .Q(Q),
+        .Q_n(Q_n)
+    );
+
+  
+    initial begin
+        clk = 0; 
+        forever #5 clk = ~clk; 
+    end
+
+ 
+    initial begin
+     
+        S = 0;
+        R = 0;
+
+       
+        #10;
+
+       
+        S = 1; R = 0; 
+        #10; 
+
+        
+        S = 0; R = 1; 
+        #10; 
+
+       
+        S = 0; R = 0; 
+        #10;
+
+       
+        S = 1; R = 1; 
+        #10; 
+
+       
+        S = 1; R = 0; 
+        #10; 
+        
+        S = 0; R = 1; 
+        #10; 
+
+       
+        $finish; 
+    end
+
+  
+    initial begin
+        $monitor("Time: %0t | S: %b | R: %b | clk: %b | Q: %b | Q_n: %b", 
+                 $time, S, R, clk, Q, Q_n);
+    end
+
+endmodule
