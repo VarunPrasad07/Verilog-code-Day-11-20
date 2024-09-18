@@ -1,0 +1,9 @@
+module sub(
+input a,
+input b,
+input c,
+output d,bout
+);
+assign d=a^b^c;
+assign bout=(~b&c)|(~(b&c))&a;
+endmodule
