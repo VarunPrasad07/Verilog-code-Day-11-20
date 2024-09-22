@@ -1,0 +1,51 @@
+`timescale 1ns / 1ps
+
+module tb_D_Latch;
+
+    
+    reg D;               
+    reg EN;               
+    wire Q;             
+    wire Qn;             
+
+ 
+    D_Latch uut (
+        .D(D),
+        .EN(EN),
+        .Q(Q),
+        .Qn(Qn)
+    );
+
+ 
+    initial begin
+ 
+        D = 0; EN = 0;
+
+      
+        #10;
+        
+    
+        D = 1; EN = 0; 
+        #10; 
+        $display("D=%b, EN=%b, Q=%b, Qn=%b", D, EN, Q, Qn);
+        
+     
+        EN = 1; 
+        #10;
+        $display("D=%b, EN=%b, Q=%b, Qn=%b", D, EN, Q, Qn);
+        
+       
+        D = 0;
+        #10;
+        $display("D=%b, EN=%b, Q=%b, Qn=%b", D, EN, Q, Qn);
+        
+     
+        EN = 0; 
+        #10;
+        $display("D=%b, EN=%b, Q=%b, Qn=%b", D, EN, Q, Qn);
+        
+       
+        $finish;
+    end
+
+endmodule
