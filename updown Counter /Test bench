@@ -1,0 +1,27 @@
+module updowncounter_tb();
+reg clk,rst;
+reg up;
+wire c;
+updowncounter DUT(.clk(clk),.rst(rst),.up(up),.c(c));
+initial 
+begin
+clk=0;
+up=0;
+rst=1;
+#10;
+rst=0;
+forever #10 clk=~clk;
+$display("rst c=%b",c);
+up=1;
+#50;
+$display("c=%b",c);
+up=0;
+#50;
+$display("c=%b",c);
+rst=1;
+#10;
+rst=1;
+#10;
+$finish;
+end 
+endmodule 
